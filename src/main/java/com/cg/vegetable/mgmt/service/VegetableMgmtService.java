@@ -1,10 +1,13 @@
 package com.cg.vegetable.mgmt.service;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.cg.vegetable.mgmt.exceptions.ResourceNotFoundException;
@@ -12,7 +15,7 @@ import com.cg.vegetable.mgmt.model.VegetableDTO;
 import com.cg.vegetable.mgmt.repository.VegetableMgmtRepository;
 
 @Service
-public class VegetableMgmtService {
+public class VegetableMgmtService implements VegetableMgmtServce {
 	@Autowired
 	private VegetableMgmtRepository vegRepo;
 
@@ -52,6 +55,23 @@ public class VegetableMgmtService {
 	{
 		return vegRepo.findAll();
 	}
+	/*public List<VegetableDTO> viewVegetableByName( String name)
+	{
 	
-	
+		VegetableDTO veg = new VegetableDTO();
+     veg.setName(name);
+
+  //   var matcher = ExampleMatcher.matching()
+             .withMatcher("name", exact())
+             .withIgnorePaths("");
+
+   //  var example = Example.of(veg, matcher);
+     return (List<VegetableDTO>) VegetableMgmtRepository.findAll(example);
+}*/
+
+	@Override
+	public List<VegetableDTO> viewVegetableByName(String name) {
+		// TODO Auto-generated method stub
+		return vegRepo.findByName(name);
+	}
 }
