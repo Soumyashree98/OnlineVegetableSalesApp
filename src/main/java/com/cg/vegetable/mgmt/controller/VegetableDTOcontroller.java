@@ -56,6 +56,7 @@ public class VegetableDTOcontroller {
 	{
 		return vegMgmtservice.viewVegetableList(category);
 	}
+	
 	@GetMapping("/names/{name}")
 	public List<VegetableDTO> viewVegetableByName(@RequestParam(value="name") String name) 
 	{
