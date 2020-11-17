@@ -14,5 +14,6 @@ public interface VegetableMgmtRepository extends JpaRepository<VegetableDTO,Inte
 	@Query(value = "SELECT * FROM VEGETABLEDTO WHERE CATEGORY = ?", nativeQuery = true)
 	  List<VegetableDTO> findByCategory(String category);
 	
-	
+	//@Query(value = "SELECT * FROM VEGETABLEDTO WHERE CATEGORY = ?", nativeQuery = true)
+	  //List<VegetableDTO> findByCategory(String category);	
 }
