@@ -16,9 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<sonar.projectKey>Soumyashree98_OnlineVegetableSalesApp</sonar.projectKey>
-  <sonar.organization>soumyashree98</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 
@@ -28,12 +25,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 <!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
-<dependency>
-    <groupId>org.sonarsource.sonarqube</groupId>
-    <artifactId>sonar-plugin-api</artifactId>
-    <version>8.5.1.38104</version>
-</dependency>
-  
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -43,6 +35,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.6.0.1398</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.6</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
