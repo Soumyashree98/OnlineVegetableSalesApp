@@ -35,11 +35,10 @@ public class VegetableMgmtControllerIntegrationTest {
 				HttpMethod.GET, entity, String.class);
 		assertNotNull(response.getBody());
 	}
-	
+
 	@Test
 	public void testaddVegetable() {
 		VegetableDTO veg= new VegetableDTO();
-		veg.setVegId(10);
 		veg.setName("Raddish");
 		veg.setType("Fresh Stock");
 		veg.setCategory("Stock");
@@ -49,7 +48,32 @@ public class VegetableMgmtControllerIntegrationTest {
 		assertNotNull(postResponse);
 		assertNotNull(postResponse.getBody());
 	}
-
+	  @Test
+	  void testAddVegetablePositive() {
+		  VegetableDTO veg= new VegetableDTO();
+		  veg.setName("Brinjal");
+			veg.setType("Fresh Stock");
+			veg.setCategory("Stock");
+			veg.setPrice(50.00);
+			veg.setQuantity(5);
+			ResponseEntity<VegetableDTO> postResponse = testRestTemplate
+					.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
+			assertNotNull(postResponse);
+			assertNotNull(postResponse.getBody());
+	  }
+	  @Test
+	  void testAddOrderNegative() {
+		  VegetableDTO veg= new VegetableDTO();
+		  veg.setName("Brinjal");
+			veg.setType("Fresh Stock");
+			veg.setCategory("Stock");
+			veg.setPrice(50.00);
+			veg.setQuantity(5);
+			ResponseEntity<VegetableDTO> postResponse = testRestTemplate
+					.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
+			assertNotNull(postResponse);
+			assertNotNull(postResponse.getBody());
+	  }
 	@Test
 	public void testUpdateVegetable() {
 		int vegid = 1;
@@ -68,7 +92,7 @@ public class VegetableMgmtControllerIntegrationTest {
 	public void testDeleteVegetable() {
 
 		int vegid = 2;
-          VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + vegid, VegetableDTO.class);
+		VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + vegid, VegetableDTO.class);
 		assertNotNull(veg);
 		testRestTemplate.delete(getRootUrl() + "/vegetables/removeVegetable/" + vegid);
 		try {
@@ -77,13 +101,14 @@ public class VegetableMgmtControllerIntegrationTest {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}
 	}
-	/*@Test
-		public void testGetVegetableByCategory() {
-		VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/Stock", VegetableDTO.class);
+
+
+	@Test
+	public void testGetVegetableByCategory() {
+		VegetableDTO veg  = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/Stock", VegetableDTO.class);
 		System.out.println(veg.getCategory());
 		assertNotNull(veg);
-		}*/
-	
+	}
 
 
 }
