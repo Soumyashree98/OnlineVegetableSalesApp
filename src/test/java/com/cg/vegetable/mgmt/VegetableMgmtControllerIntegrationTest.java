@@ -77,7 +77,7 @@ public class VegetableMgmtControllerIntegrationTest {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}
 	}
-		/*@Test
+	/*@Test
 		public void testGetVegetableByCategory() {
 		VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/Stock", VegetableDTO.class);
 		System.out.println(veg.getCategory());
