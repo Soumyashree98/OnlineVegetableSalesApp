@@ -16,14 +16,37 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-	</properties>
-
+	
+ 
+</properties>
+	
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.codehaus.sonar/sonar-plugin-api -->
+<dependency>
+    <groupId>org.codehaus.sonar</groupId>
+    <artifactId>sonar-plugin-api</artifactId>
+    <version>5.1</version>
+    <scope>provided</scope>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.java/sonar-jacoco-listeners -->
+<dependency>
+    <groupId>org.sonarsource.java</groupId>
+    <artifactId>sonar-jacoco-listeners</artifactId>
+    <version>5.14.0.18788</version>
+    <scope>test</scope>
+</dependency>
+	<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+<dependency>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.6</version>
+</dependency>
+		
 <!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
 
 		<dependency>
@@ -36,17 +59,7 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
-<dependency>
-    <groupId>org.sonarsource.sonarqube</groupId>
-    <artifactId>sonar-plugin-api</artifactId>
-    <version>8.5.1.38104</version>
-</dependency>
-        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.6</version>
-        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -58,10 +71,19 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent -->
+<dependency>
+    <groupId>org.jacoco</groupId>
+    <artifactId>org.jacoco.agent</artifactId>
+    <version>0.8.6</version>
+    <scope>test</scope>
+</dependency>
+		
 	</dependencies>
 
 	<build>
 		<plugins>
+		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

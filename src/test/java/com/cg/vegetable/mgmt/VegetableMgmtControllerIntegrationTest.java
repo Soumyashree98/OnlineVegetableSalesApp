@@ -48,32 +48,7 @@ public class VegetableMgmtControllerIntegrationTest {
 		assertNotNull(postResponse);
 		assertNotNull(postResponse.getBody());
 	}
-	  @Test
-	  void testAddVegetablePositive() {
-		  VegetableDTO veg= new VegetableDTO();
-		  veg.setName("Brinjal");
-			veg.setType("Fresh Stock");
-			veg.setCategory("Stock");
-			veg.setPrice(50.00);
-			veg.setQuantity(5);
-			ResponseEntity<VegetableDTO> postResponse = testRestTemplate
-					.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
-			assertNotNull(postResponse);
-			assertNotNull(postResponse.getBody());
-	  }
-	  @Test
-	  void testAddOrderNegative() {
-		  VegetableDTO veg= new VegetableDTO();
-		  veg.setName("Brinjal");
-			veg.setType("Fresh Stock");
-			veg.setCategory("Stock");
-			veg.setPrice(50.00);
-			veg.setQuantity(5);
-			ResponseEntity<VegetableDTO> postResponse = testRestTemplate
-					.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
-			assertNotNull(postResponse);
-			assertNotNull(postResponse.getBody());
-	  }
+
 	@Test
 	public void testUpdateVegetable() {
 		int vegid = 1;
@@ -98,7 +73,7 @@ public class VegetableMgmtControllerIntegrationTest {
 		try {
 			veg= testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + vegid, VegetableDTO.class);
 		} catch (final HttpClientErrorException e) {
-			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
+			assertEquals( HttpStatus.NOT_FOUND,e.getStatusCode());
 		}
 	}
 
@@ -110,6 +85,51 @@ public class VegetableMgmtControllerIntegrationTest {
 		assertNotNull(veg);
 	}
 
-
+	@Test
+	void testAddVegetablePositive() {
+		VegetableDTO veg= new VegetableDTO();
+		veg.setName("Brinjal");
+		veg.setType("Fresh Stock");
+		veg.setCategory("Stock");
+		veg.setPrice(50.00);
+		veg.setQuantity(5);
+		ResponseEntity<VegetableDTO> postResponse = testRestTemplate
+				.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
+		assertNotNull(postResponse);
+		assertNotNull(postResponse.getBody());
+	}
+	@Test
+	void testAddOrderNegative() {
+		VegetableDTO veg= new VegetableDTO();
+		veg.setName("Brinjal");
+		veg.setType("Fresh Stock");
+		veg.setCategory("Stock");
+		veg.setPrice(50.00);
+		veg.setQuantity(5);
+		ResponseEntity<VegetableDTO> postResponse = testRestTemplate
+				.postForEntity(getRootUrl() + "/vegetables/newVegetables/",veg, VegetableDTO.class);
+		assertNotNull(postResponse);
+		assertNotNull(postResponse.getBody());
+	}
+	@Test
+	public void testUpdateVegetablesPositive() {
+		int id = 3;
+		VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + id, VegetableDTO.class);
+		veg.setName("Bottle Gourd");
+		veg.setType("Fresh Stock");
+		veg.setCategory("Stock");
+		veg.setPrice(80.00);
+		veg.setQuantity(5);
+		testRestTemplate.put(getRootUrl() + "/vegetables/update" + id, veg);
+		VegetableDTO updatedVegetable = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + id, VegetableDTO.class);
+		assertNotNull(updatedVegetable);
+	}
+	@Test
+	public void testUpdateOrderNegative() {
+		int id = 4;
+		VegetableDTO veg = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + id, VegetableDTO.class);
+		testRestTemplate.put(getRootUrl() + "/orders/updateOrder" + id, veg);
+		VegetableDTO updatedOrder = testRestTemplate.getForObject(getRootUrl() + "/vegetables/getVegetableDTO/" + id, VegetableDTO.class);
+		assertNotNull(updatedOrder);
+	}  
 }
-
